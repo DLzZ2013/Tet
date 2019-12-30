@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-coupon" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-coupon-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-coupon-parent/tet-coupon-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-coupon-parent/tet-coupon-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-euraka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-global" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-test" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tet-zuul" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

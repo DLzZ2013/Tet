@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tetcouponmanager.dao.CouponCodeUserMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.tetcouponmanager.entity.CouponCodeUser">
+    <id column="c_coupon_code" jdbcType="VARCHAR" property="cCouponCode" />
+    <result column="c_id" jdbcType="VARCHAR" property="cId" />
+    <result column="c_user_id" jdbcType="VARCHAR" property="cUserId" />
+    <result column="c_status" jdbcType="CHAR" property="cStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    c_coupon_code, c_id, c_user_id, c_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from c_coupon_code_user
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from c_coupon_code_user
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.tetcouponmanager.entity.CouponCodeUser">
+    insert into c_coupon_code_user (c_coupon_code, c_id, c_user_id, 
+      c_status)
+    values (#{cCouponCode,jdbcType=VARCHAR}, #{cId,jdbcType=VARCHAR}, #{cUserId,jdbcType=VARCHAR}, 
+      #{cStatus,jdbcType=CHAR})
+  </insert>
+  <sql id="inserts">
+    insert into c_coupon_code_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cCouponCode != null">
+        c_coupon_code,
+      </if>
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cUserId != null">
+        c_user_id,
+      </if>
+      <if test="cStatus != null">
+        c_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cCouponCode != null">
+        #{cCouponCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null">
+        #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserId != null">
+        #{cUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null">
+        #{cStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </sql>
+  <insert id="insertSelective" parameterType="cn.edu.tetcouponmanager.entity.CouponCodeUser">
+    <include refid="inserts"></include>
+  </insert>
+    <insert id="insertRange" parameterType="cn.edu.tetcouponmanager.entity.CouponCodeUser">
+      <if test="codes!=null">
+        insert into c_coupon_code_user
+        <trim prefix="(" suffix=")values">
+            c_coupon_code, c_id, c_user_id, c_status
+        </trim>
+        <foreach collection="codes" item="couponCodeUser" separator=",">
+          <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="couponCodeUser.cCouponCode != null">
+              #{couponCodeUser.cCouponCode,jdbcType=VARCHAR},
+            </if>
+            <if test="couponCodeUser.cId != null">
+              #{couponCodeUser.cId,jdbcType=VARCHAR},
+            </if>
+              #{couponCodeUser.cUserId,jdbcType=VARCHAR},
+              #{couponCodeUser.cStatus,jdbcType=CHAR},
+          </trim>
+        </foreach>
+      </if>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.edu.tetcouponmanager.entity.CouponCodeUser">
+    update c_coupon_code_user
+    <set>
+      <if test="cId != null">
+        c_id = #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserId != null">
+        c_user_id = #{cUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null">
+        c_status = #{cStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.tetcouponmanager.entity.CouponCodeUser">
+    update c_coupon_code_user
+    set c_id = #{cId,jdbcType=VARCHAR},
+      c_user_id = #{cUserId,jdbcType=VARCHAR},
+      c_status = #{cStatus,jdbcType=CHAR}
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

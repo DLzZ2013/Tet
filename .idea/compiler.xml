@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="tet-global" />
+        <module name="tet-coupon-common" />
+        <module name="tet-zuul" />
+        <module name="tet-euraka" />
+        <module name="tet-coupon-manager" />
+        <module name="tet-test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tet-conf" target="1.8" />
+      <module name="tet-conf-re" target="1.5" />
+      <module name="tet-config" target="1.8" />
+      <module name="tet-ct" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="tet-conf" options="-parameters" />
+      <module name="tet-config" options="-parameters" />
+      <module name="tet-coupon-common" options="-parameters" />
+      <module name="tet-coupon-manager" options="-parameters" />
+      <module name="tet-ct" options="-parameters" />
+      <module name="tet-euraka" options="-parameters" />
+      <module name="tet-global" options="-parameters" />
+      <module name="tet-test" options="-parameters" />
+      <module name="tet-zuul" options="-parameters" />
+    </option>
+  </component>
+</project>

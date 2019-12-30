@@ -1,0 +1,31 @@
+#<kjxz-eureka <e1---eureka1,e2----eureka2>>
+#ConcurrentHashMap<String,Map<String,Lease<InstanceInfo>>>
+#微服务应用名称(一组实例构成集群)---------实例名称（eureka_instance_hostname）-------实例的具体信息
+spring:
+  application:
+#    应用名：concurrentHashMap第一个key
+    name: tet-eureka
+eureka:
+  instance:
+#    实例名：第二个key
+    hostname: e1
+    #hostname:e2
+    #不倾向用ip访问
+    preferIpAddress: false
+  client:
+    service-url:
+      #1.作为服务器告诉别人用这个地址来注册,自己的注册路径默认就是http://e1:8000/eureka
+      #2.作为客户端,用这个url注册到其它eureka服务器上面(优先)，可以设置多个url来访问eureka集群
+      #3.默认后面为/eureka
+      #4.eureka同时作为客户端和服务器
+#      defaultZone: http://e1:8000/eureka/
+      defaultZone: http://e1:8000/eureka/
+      #默认true自己为客户端会去请求其他eureka服务器，false不让它自己去注册到服务端
+    register-with-eureka: false
+    #数据是否同步（默认为true）
+    fetch-registry: false
+  server:
+    enable-self-preservation: true
+
+server:
+  port: 8000

@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: tet-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/DLzZ2013/config_server.git
+          username: 798679633@qq.com
+          password: q7105693
+          basedir: F:/QF/config
+server:
+  port: 7000
+eureka:
+  instance:
+    hostname: config
+  client:
+    service-url:
+      #1.作为服务器告诉别人用这个地址来注册,自己的注册路径默认就是http://e1:8000/eureka
+      #2.作为客户端,用这个url注册到其它eureka服务器上面(优先)，可以设置多个url来访问eureka集群
+      #3.默认后面为/eureka
+      #4.eureka同时作为客户端和服务器
+      defaultZone: http://e1:8000/eureka/
