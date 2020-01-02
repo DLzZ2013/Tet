@@ -2,6 +2,8 @@ package cn.edu.global.common;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @Author:DLzZ2013
  * @Description:
@@ -9,7 +11,7 @@ import lombok.Data;
  * @Modified By:
  */
 @Data
-public class ResultResponse<T> {
+public class ResultResponse<T> implements Serializable {
     private int code;
     private String message;
     private T data;

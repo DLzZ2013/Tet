@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.tetcoupondispatch.dao.CouponCodeUserMapper">
+  <resultMap id="BaseResultMap" type="cn.edu.tetcoupondispatch.entity.CouponCodeUser">
+    <id column="c_coupon_code" jdbcType="VARCHAR" property="cCouponCode" />
+    <result column="c_id" jdbcType="VARCHAR" property="cId" />
+    <result column="c_user_id" jdbcType="VARCHAR" property="cUserId" />
+    <result column="c_status" jdbcType="CHAR" property="cStatus" />
+    <result column="c_merchant_id" jdbcType="VARCHAR" property="cMerchantId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    c_coupon_code, c_id, c_user_id, c_status, c_merchant_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from c_coupon_code_user
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from c_coupon_code_user
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.edu.tetcoupondispatch.entity.CouponCodeUser">
+    insert into c_coupon_code_user (c_coupon_code, c_id, c_user_id, 
+      c_status, c_merchant_id)
+    values (#{cCouponCode,jdbcType=VARCHAR}, #{cId,jdbcType=VARCHAR}, #{cUserId,jdbcType=VARCHAR}, 
+      #{cStatus,jdbcType=CHAR}, #{cMerchantId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.edu.tetcoupondispatch.entity.CouponCodeUser">
+    insert into c_coupon_code_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cCouponCode != null">
+        c_coupon_code,
+      </if>
+      <if test="cId != null">
+        c_id,
+      </if>
+      <if test="cUserId != null">
+        c_user_id,
+      </if>
+      <if test="cStatus != null">
+        c_status,
+      </if>
+      <if test="cMerchantId != null">
+        c_merchant_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cCouponCode != null">
+        #{cCouponCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cId != null">
+        #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserId != null">
+        #{cUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null">
+        #{cStatus,jdbcType=CHAR},
+      </if>
+      <if test="cMerchantId != null">
+        #{cMerchantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertRange">
+        insert into c_coupon_code_user(c_id,c_coupon_code,c_merchant_id,c_status)
+            <foreach collection="codes" separator="," item="code" open="values ">
+              (#{cId},#{code},#{merchantId},1)
+            </foreach>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.edu.tetcoupondispatch.entity.CouponCodeUser">
+    update c_coupon_code_user
+    <set>
+      <if test="cId != null">
+        c_id = #{cId,jdbcType=VARCHAR},
+      </if>
+      <if test="cUserId != null">
+        c_user_id = #{cUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cStatus != null">
+        c_status = #{cStatus,jdbcType=CHAR},
+      </if>
+      <if test="cMerchantId != null">
+        c_merchant_id = #{cMerchantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.edu.tetcoupondispatch.entity.CouponCodeUser">
+    update c_coupon_code_user
+    set c_id = #{cId,jdbcType=VARCHAR},
+      c_user_id = #{cUserId,jdbcType=VARCHAR},
+      c_status = #{cStatus,jdbcType=CHAR},
+      c_merchant_id = #{cMerchantId,jdbcType=VARCHAR}
+    where c_coupon_code = #{cCouponCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateUserIdByMerchantIdAndCodeId">
+    update c_coupon_code_user set c_user_id=#{userId} where c_merchant_id = #{merchantId} and c_coupon_code=#{code}
+  </update>
+</mapper>

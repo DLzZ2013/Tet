@@ -285,7 +285,8 @@ public class RedisUtils {
             redisTemplate.opsForHash().put(key, field, value);
             return true;
         }catch (Exception e){
-            log.error("redis hset eror,key:{},field:{},value:{}",key,field,value);
+            e.printStackTrace();
+            log.error("redis hset error,key:{},field:{},value:{}",key,field,value);
             return false;
         }
     }
@@ -520,5 +521,33 @@ public class RedisUtils {
         }
     }
 
+
+    /**
+     * 随机取1个元素  count为正数就取不重复的  负数就有可能重复
+     * @param key
+     * @return
+     */
+    public Object sRandom(String key) {
+        try {
+            return  redisTemplate.opsForSet().randomMember(key);
+        } catch (Exception e) {
+            log.error("redis sRandom error,key:{},exception:{}",key,e);
+            return null;
+        }
+    }
+
+    /**
+     * 弹出一个元素
+     * @param key
+     * @return
+     */
+    public Object spop(String key) {
+        try {
+            return  redisTemplate.opsForSet().pop(key);
+        } catch (Exception e) {
+            log.error("redis spop error,key:{},exception:{}",key,e);
+            return null;
+        }
+    }
 
 }

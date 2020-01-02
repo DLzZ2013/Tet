@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
         log.error("项目出现突发异常了~："+e);
         //根据这个异常返回给前台提示信息
         //发送邮件
-        mailService.sendHtmlMail("Tet系统异常",e.toString(), new String[]{Constants.Private.MAIL});
+//        mailService.sendHtmlMail("Tet系统异常",e.toString(), new String[]{Constants.Private.MAIL});
         ResultResponse fail = ResultResponse.fail();
         //设置真正异常信息
         fail.setMessage(e.getMessage());

@@ -14,6 +14,7 @@ import java.util.Date;
  * @Date:Create in 10:03 2019/12/28
  * @Modified By:
  */
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -54,5 +55,5 @@ public class CouponTemplateParam {
     private double cAmountLimit;
 
     private String cLinkUrl;
-    
+
 }

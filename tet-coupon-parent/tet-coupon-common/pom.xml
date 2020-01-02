@@ -16,7 +16,11 @@
             <artifactId>tet-global</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
+        <dependency>
+            <!--            springcloud封装netflix-->
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

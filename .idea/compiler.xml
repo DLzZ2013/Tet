@@ -12,6 +12,7 @@
         <module name="tet-zuul" />
         <module name="tet-euraka" />
         <module name="tet-coupon-manager" />
+        <module name="tet-coupon-dispatch" />
         <module name="tet-test" />
       </profile>
     </annotationProcessing>
@@ -27,6 +28,7 @@
       <module name="tet-conf" options="-parameters" />
       <module name="tet-config" options="-parameters" />
       <module name="tet-coupon-common" options="-parameters" />
+      <module name="tet-coupon-dispatch" options="-parameters" />
       <module name="tet-coupon-manager" options="-parameters" />
       <module name="tet-ct" options="-parameters" />
       <module name="tet-euraka" options="-parameters" />
